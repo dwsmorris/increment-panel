@@ -23,5 +23,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 	<increment-panel></increment-panel>
 
+	  <script>
+	  	addEventListener("WebComponentsReady", function () {
+	  		var incrementPanel = document.querySelector("increment-panel");
+
+	  		incrementPanel.deltaSource.subscribe(function (delta) {
+	  			console.log(delta);
+	  		});
+	  	});
+	  </script>
   </body>
 </html>

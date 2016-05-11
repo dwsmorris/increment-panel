@@ -2,6 +2,7 @@
 <link rel="import" href="../highland-import/highland-import.html" />
 
 <link rel="import" href="../paper-button/paper-button.html" />
+<link rel="import" href="../rxjs-import/rxjs-import.html" />
 
 <dom-module id="increment-panel">
 	<template>
@@ -21,7 +22,13 @@
 				}
 			},
 			attached: function () {
+				var decrementButton = document.querySelector("paper-button#increment");
+				var incrementButton = document.querySelector("paper-button#decrement");
 
+				var decrementSource = Rx.Observable.fromEvent(decrementButton, "click").map(-1);
+				var incrementSource = Rx.Observable.fromEvent(incrementButton, "click").map(1);
+
+				this.deltaSource = decrementSource.merge(incrementSource).scan(function (acc, x) { return acc + x; });
 			}
 		});
 	</script>
