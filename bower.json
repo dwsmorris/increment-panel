@@ -12,7 +12,8 @@
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "highland-import": "dwsmorris/highland-import"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
