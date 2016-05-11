@@ -13,7 +13,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
-    "highland-import": "dwsmorris/highland-import"
+	"highland-import": "dwsmorris/highland-import",
+	"paper-button": "*"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
