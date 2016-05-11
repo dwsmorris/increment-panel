@@ -5,11 +5,25 @@
 
 <dom-module id="increment-panel">
 	<template>
-		<paper-button>-</paper-button><paper-button>+</paper-button>
+		<paper-button id="increment">[[decrementLabel]]</paper-button><paper-button id="decrement">[[incrementLabel]]</paper-button>
 	</template>
 	<script>
 		Polymer({
-			is: 'increment-panel'
+			is: 'increment-panel',
+			properties: {
+				decrementLabel: {
+					type: String,
+					value: "-"
+				},
+				incrementLabel: {
+					type: String,
+					value: "+"
+				}
+			},
+			attached: function () {
+				console.log(highland);
+				//document.querySelector("paper-button#increment")
+			}
 		});
 	</script>
 </dom-module>
