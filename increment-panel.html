@@ -28,7 +28,7 @@
 				var decrementSource = Rx.Observable.fromEvent(decrementButton, "click").map(-1);
 				var incrementSource = Rx.Observable.fromEvent(incrementButton, "click").map(1);
 
-				this.deltaSource = decrementSource.merge(incrementSource).scan(function (acc, x) { return acc + x; });
+				this.deltaSource = decrementSource.merge(incrementSource);
 			}
 		});
 	</script>
