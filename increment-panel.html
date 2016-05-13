@@ -21,16 +21,14 @@
 					value: "+"
 				}
 			},
-			attached: function () {
-				this.async(function () {
-					var decrementButton = document.querySelector("paper-button#increment");
-					var incrementButton = document.querySelector("paper-button#decrement");
+			ready: function () {
+				var decrementButton = this.$.decrement;
+				var incrementButton = this.$.increment;
 
-					var decrementSource = Rx.Observable.fromEvent(decrementButton, "click").map(-1);
-					var incrementSource = Rx.Observable.fromEvent(incrementButton, "click").map(1);
+				var decrementSource = Rx.Observable.fromEvent(decrementButton, "click").map(-1);
+				var incrementSource = Rx.Observable.fromEvent(incrementButton, "click").map(1);
 
-					this.deltaSource = decrementSource.merge(incrementSource).scan(function (acc, x) { return acc + x; });
-				});
+				this.deltaSource = decrementSource.merge(incrementSource).scan(function (acc, x) { return acc + x; });
 			}
 		});
 	</script>
