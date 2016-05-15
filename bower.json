@@ -13,7 +13,6 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
-    "highland-import": "dwsmorris/highland-import",
     "paper-button": "*",
     "rxjs-import": "dwsmorris/rxjs-import"
   },
