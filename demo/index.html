@@ -26,7 +26,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	  <script>
 	  	addEventListener("WebComponentsReady", function () {
 	  		var incrementPanel = document.querySelector("increment-panel");
-
+	  		//var source = PatternScript.reduce(incrementPanel.deltaSource());
+	  		//var deltaSource = incrementPanel.deltaSource();
 	  		incrementPanel.deltaSource.subscribe(function (delta) {
 	  			console.log(delta);
 	  		});

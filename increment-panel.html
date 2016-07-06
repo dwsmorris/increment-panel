@@ -2,13 +2,14 @@
 
 <link rel="import" href="../paper-button/paper-button.html" />
 <link rel="import" href="../rxjs-import/rxjs-import.html" />
+<link rel="import" href="../patternscript/patternscript.html" />
 
 <dom-module id="increment-panel">
 	<template>
 		<paper-button id="decrement">[[decrementLabel]]</paper-button><paper-button id="increment">[[incrementLabel]]</paper-button>
 	</template>
 	<script>
-		Polymer({
+		IncrementPanel = Polymer({
 			is: 'increment-panel',
 			properties: {
 				decrementLabel: {
@@ -21,14 +22,22 @@
 				}
 			},
 			ready: function () {
-				var decrementButton = this.$.decrement;
-				var incrementButton = this.$.increment;
-
-				var decrementSource = Rx.Observable.fromEvent(decrementButton, "click").map(-1);
-				var incrementSource = Rx.Observable.fromEvent(incrementButton, "click").map(1);
+				
+				var decrementSource = Rx.Observable.fromEvent(this.decrementButton(), "click").map(-1);
+				var incrementSource = Rx.Observable.fromEvent(this.incrementButton(), "click").map(1);
 
 				this.deltaSource = decrementSource.merge(incrementSource);
+
 			}
+		});
+		PatternScript.extend(IncrementPanel.prototype, {
+			"(decrementButton)"	: "(this.$$ '#decrement')",
+			"(incrementButton)"	: "(this.$$ '#increment')"/*,
+			"(decrementClicks)"	: "(Rx.Observable.fromEvent (incrementButton) 'click')",
+			"(incrementClicks)"	: "(Rx.Observable.fromEvent (decrementButton) 'click')",
+			"(decrementSource)"	: "((. (decrementClicks) 'map') -1)",
+			"(incrementSource)"	: "((. (incrementClicks) 'map') 1)",
+			"(deltaSource)"		: "((. (decrementSource) 'merge') (incrementSource))"*/
 		});
 	</script>
 </dom-module>
