@@ -22,22 +22,21 @@
 				}
 			},
 			ready: function () {
-				
-				var decrementSource = Rx.Observable.fromEvent(this.decrementButton(), "click").map(-1);
-				var incrementSource = Rx.Observable.fromEvent(this.incrementButton(), "click").map(1);
-
-				this.deltaSource = decrementSource.merge(incrementSource);
-
 			}
 		});
 		PatternScript.extend(IncrementPanel.prototype, {
+			"(array)": "([] 1 2 3)",
+			"(array1)": "(. (array) 1)",
+			"(object)": "({} 'a' 2 'b' 3 'c' 4)",
+			"(objectb)": "(. (object) 'b')",
 			"(decrementButton)"	: "(this.$$ '#decrement')",
-			"(incrementButton)"	: "(this.$$ '#increment')"/*,
-			"(decrementClicks)"	: "(Rx.Observable.fromEvent (incrementButton) 'click')",
-			"(incrementClicks)"	: "(Rx.Observable.fromEvent (decrementButton) 'click')",
-			"(decrementSource)"	: "((. (decrementClicks) 'map') -1)",
+			"(incrementButton)": "(this.$$ '#increment')",
+			"(decrementClicks)"	: "(Rx.Observable.fromEvent (decrementButton) 'click')",
+			"(incrementClicks)": "(Rx.Observable.fromEvent (incrementButton) 'click')",
+			"(decmap)": "(. (decrementClicks) 'map')",
+			"(decrementSource)": "((. (decrementClicks) 'map') -1)",
 			"(incrementSource)"	: "((. (incrementClicks) 'map') 1)",
-			"(deltaSource)"		: "((. (decrementSource) 'merge') (incrementSource))"*/
+			"(deltaSource)"		: "((. (decrementSource) 'merge') (incrementSource))"
 		});
 	</script>
 </dom-module>
