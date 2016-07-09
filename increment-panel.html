@@ -25,16 +25,12 @@
 			}
 		});
 		PatternScript.extend(IncrementPanel.prototype, {
-			"(array)": "([] 1 2 3)",
-			"(array1)": "(. (array) 1)",
-			"(object)": "({} 'a' 2 'b' 3 'c' 4)",
-			"(objectb)": "(. (object) 'b')",
 			"(decrementButton)"	: "(this.$$ '#decrement')",
-			"(incrementButton)": "(this.$$ '#increment')",
+			"(incrementButton)"	: "(this.$$ '#increment')",
 			"(decrementClicks)"	: "(Rx.Observable.fromEvent (decrementButton) 'click')",
-			"(incrementClicks)": "(Rx.Observable.fromEvent (incrementButton) 'click')",
-			"(decmap)": "(. (decrementClicks) 'map')",
-			"(decrementSource)": "((. (decrementClicks) 'map') -1)",
+			"(incrementClicks)"	: "(Rx.Observable.fromEvent (incrementButton) 'click')",
+			"(decmap)"			: "(. (decrementClicks) 'map')",
+			"(decrementSource)"	: "((. (decrementClicks) 'map') -1)",
 			"(incrementSource)"	: "((. (incrementClicks) 'map') 1)",
 			"(deltaSource)"		: "((. (decrementSource) 'merge') (incrementSource))"
 		});
